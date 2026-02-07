@@ -105,10 +105,28 @@ function scicalc_delete_instance(int $id): bool {
 }
 
 /**
- * Adds extra info for course module listing.
+ * Returns information used by course listings (course page, dashboard, etc.).
  *
- * @param cm_info $cm The course module info.
+ * @param object $coursemodule The course module record.
+ * @return cached_cm_info|null
+ * @throws dml_exception
  */
-function scicalc_cm_info_view(cm_info $cm) {
-    // Intentionally empty. Kept for future enhancements.
+function scicalc_get_coursemodule_info($coursemodule): ?cached_cm_info {
+    global $DB;
+
+    $scicalc = $DB->get_record("scicalc", ["id" => $coursemodule->instance], "id,name,intro,introformat");
+
+    if (!$scicalc) {
+        return null;
+    }
+
+    $info = new cached_cm_info();
+    $info->name = $scicalc->name;
+
+    // Show description on the course page when enabled.
+    if (!empty($coursemodule->showdescription)) {
+        $info->content = format_module_intro("scicalc", $scicalc, $coursemodule->id, false);
+    }
+
+    return $info;
 }
