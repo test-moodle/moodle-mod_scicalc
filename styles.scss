@@ -34,19 +34,15 @@ $shadow-key: 0 7px 0 rgba(0, 0, 0, 0.45), 0 10px 18px rgba(0, 0, 0, 0.35);
             padding-top: 18px;
         }
     }
-    // Subtle background so the calculator pops.
     .calculator {
-        background: radial-gradient(1200px 600px at 30% 0%, rgba(255, 255, 255, 0.06), transparent 55%),
-        linear-gradient(to bottom, $calc-panel, $calc-bg);
+        background: radial-gradient(1200px 600px at 30% 0%, rgba(255, 255, 255, 0.06), transparent 55%), linear-gradient(to bottom, $calc-panel, $calc-bg);
         border: 1px solid $calc-border;
         border-radius: 22px;
         box-shadow: $shadow-soft;
         overflow: hidden;
         padding: 1.25rem;
-        // Display (screen)
         #scicalc-display {
-            background: radial-gradient(900px 250px at 20% 0%, rgba(0, 255, 178, 0.09), transparent 55%),
-            linear-gradient(to bottom, lighten($screen-bg, 2%), $screen-bg);
+            background: radial-gradient(900px 250px at 20% 0%, rgba(0, 255, 178, 0.09), transparent 55%), linear-gradient(to bottom, lighten($screen-bg, 2%), $screen-bg);
             border: 1px solid $screen-border;
             color: $screen-text;
             border-radius: 16px;
@@ -68,7 +64,39 @@ $shadow-key: 0 7px 0 rgba(0, 0, 0, 0.45), 0 10px 18px rgba(0, 0, 0, 0.35);
                 0 18px 28px rgba(0, 0, 0, 0.45);
             }
         }
-        // Buttons base
+        .childcourse-angle-controls {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            border-radius: .375rem;
+            margin-left: 15px !important;
+            .btn {
+                background: linear-gradient(to bottom, #232e41, #1a2230);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                color: #e9eef7;
+                font-weight: 200;
+                letter-spacing: .02em;
+                padding: .25rem .6rem;
+                line-height: 1.2;
+                min-height: 50px;
+                min-width: 52px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transform: none !important;
+                &:focus,
+                &:active:focus {
+                    box-shadow: none;
+                }
+            }
+            .btn-check:checked + .btn {
+                color: #ffffff;
+                font-weight: 600;
+            }
+            [for=anglemode-deg] {
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+            }
+        }
         .btn {
             border-radius: 14px;
             font-weight: 700;
@@ -84,10 +112,9 @@ $shadow-key: 0 7px 0 rgba(0, 0, 0, 0.45), 0 10px 18px rgba(0, 0, 0, 0.35);
             }
             &:active {
                 transform: translateY(2px);
-                box-shadow: 0 4px 0 rgba(0, 0, 0, 0.40), 0 8px 14px rgba(0, 0, 0, 0.28);
+                box-shadow: 0 4px 0 rgba(0, 0, 0, 0.4), 0 8px 14px rgba(0, 0, 0, 0.28);
             }
         }
-        // Default keys
         .calculator-numbers {
             > div {
                 grid-template-columns: repeat(4, 1fr);
@@ -118,7 +145,7 @@ $shadow-key: 0 7px 0 rgba(0, 0, 0, 0.45), 0 10px 18px rgba(0, 0, 0, 0.35);
         }
         // Function keys (sin/cos/...)
         button[data-action="func"] {
-            @include key-surface($key-fn-bg, rgba(180, 150, 255, 0.20), #f0ecff);
+            @include key-surface($key-fn-bg, rgba(180, 150, 255, 0.2), #f0ecff);
         }
         // Operators ( + - * / ^ % ! , )
         button[data-action="insert"][data-value="+"],
@@ -131,20 +158,20 @@ $shadow-key: 0 7px 0 rgba(0, 0, 0, 0.45), 0 10px 18px rgba(0, 0, 0, 0.35);
         button[data-action="insert"][data-value=","],
         button[data-action="insert"][data-value="("],
         button[data-action="insert"][data-value=")"] {
-            @include key-surface($key-op-bg, rgba(80, 220, 255, 0.20), #dff9ff);
+            @include key-surface($key-op-bg, rgba(80, 220, 255, 0.2), #dff9ff);
         }
         // Equals key
         button[data-action="equals"] {
             background: linear-gradient(to bottom, lighten($key-eq-bg, 10%), $key-eq-bg);
             border: 1px solid rgba(255, 190, 120, 0.45);
             color: #1b0f05;
-            box-shadow: 0 7px 0 rgba(0, 0, 0, 0.40), 0 16px 22px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 7px 0 rgba(0, 0, 0, 0.4), 0 16px 22px rgba(0, 0, 0, 0.35);
             &:hover {
                 filter: brightness(1.03) saturate(1.05);
             }
             &:focus {
                 box-shadow: 0 0 0 0.25rem rgba(255, 138, 31, 0.22),
-                0 7px 0 rgba(0, 0, 0, 0.40),
+                0 7px 0 rgba(0, 0, 0, 0.4),
                 0 16px 22px rgba(0, 0, 0, 0.35);
             }
         }
@@ -170,8 +197,8 @@ $shadow-key: 0 7px 0 rgba(0, 0, 0, 0.45), 0 10px 18px rgba(0, 0, 0, 0.35);
             }
         }
         #scicalc-error {
-            background: rgba(255, 60, 120, 0.10);
-            border: 1px solid rgba(255, 60, 120, 0.30);
+            background: rgba(255, 60, 120, 0.1);
+            border: 1px solid rgba(255, 60, 120, 0.3);
             color: rgba(255, 220, 235, 0.95);
             border-radius: 16px;
             box-shadow: 0 14px 22px rgba(0, 0, 0, 0.35);

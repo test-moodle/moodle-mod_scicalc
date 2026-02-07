@@ -26,6 +26,8 @@ define([], function () {
 
     const MAX_HISTORY_ITEMS = 50;
 
+    let angleMode = "DEG";
+
     /**
      * Tokenizes an expression into numbers, identifiers, operators, parentheses and commas.
      *
@@ -333,12 +335,22 @@ define([], function () {
                 return fn(args[0]);
             };
 
-            if (n === "sin") return f1(Math.sin);
-            if (n === "cos") return f1(Math.cos);
-            if (n === "tan") return f1(Math.tan);
-            if (n === "asin") return f1(Math.asin);
-            if (n === "acos") return f1(Math.acos);
-            if (n === "atan") return f1(Math.atan);
+            const DEG2RAD = Math.PI / 180;
+            const toRad = function (x) {
+                return x * DEG2RAD;
+            }
+            const fromRad = function (x) {
+                return x / DEG2RAD;
+            }
+
+            if (n === "sin") return f1((x) => Math.sin(angleMode === "DEG" ? toRad(x) : x));
+            if (n === "cos") return f1((x) => Math.cos(angleMode === "DEG" ? toRad(x) : x));
+            if (n === "tan") return f1((x) => Math.tan(angleMode === "DEG" ? toRad(x) : x));
+
+            if (n === "asin") return f1((x) => angleMode === "DEG" ? fromRad(Math.asin(x)) : Math.asin(x));
+            if (n === "acos") return f1((x) => angleMode === "DEG" ? fromRad(Math.acos(x)) : Math.acos(x));
+            if (n === "atan") return f1((x) => angleMode === "DEG" ? fromRad(Math.atan(x)) : Math.atan(x));
+
             if (n === "sqrt") return f1(Math.sqrt);
             if (n === "abs") return f1(Math.abs);
             if (n === "exp") return f1(Math.exp);
@@ -674,10 +686,6 @@ define([], function () {
 
     const init = (cmid) => {
         const calculator = document.querySelector("#calculator-area");
-        if (!calculator) {
-            return;
-        }
-
         calculator.style.display = "block"
 
         const input = document.getElementById("scicalc-display");
@@ -686,7 +694,8 @@ define([], function () {
         renderHistory(history);
 
         let equalsLocked = false;
-        calculator.addEventListener("click", (event) => {
+        let calculatorcontrols = document.querySelector("#calculator-area .calculator-controls")
+        calculatorcontrols.addEventListener("click", (event) => {
             if (equalsLocked) {
                 alert("Don't double-click.");
                 return;
@@ -764,6 +773,11 @@ define([], function () {
                 doEquals(input, history);
             }
         });
+
+        const rad = document.getElementById("anglemode-rad");
+        const deg = document.getElementById("anglemode-deg");
+        rad.addEventListener("change", () => (angleMode = "RAD"));
+        deg.addEventListener("change", () => (angleMode = "DEG"));
     };
 
     return {init: init};
