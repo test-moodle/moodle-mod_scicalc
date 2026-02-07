@@ -24,8 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2026020703;
-$plugin->release = "1.0.3";
+$plugin->version = 2026020704;
+$plugin->release = "1.0.4";
 $plugin->component = "mod_scicalc";
 $plugin->requires = 2022041900;
 $plugin->maturity = MATURITY_STABLE;
