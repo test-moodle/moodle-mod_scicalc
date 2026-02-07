@@ -40,7 +40,8 @@
                                spellcheck="false"
                                placeholder="e.g. sin(pi/2)+sqrt(9)*2">
 
-                        <div class="btn-group btn-group-sm childcourse-angle-controls" role="group" aria-label="Angle mode">
+                        <div class="btn-group btn-group-sm childcourse-angle-controls" role="group"
+                             aria-label="Angle mode">
                             <input type="radio" class="btn-check" name="anglemode" id="anglemode-deg" checked>
                             <label class="btn btn-outline-secondary" for="anglemode-deg">DEG</label>
 
@@ -54,8 +55,8 @@
                         <span></span>
                     </div>
 
-                    <div class="row g-2 mt-3">
-                        <div class="col-12 col-md-7 calculator-numbers calculator-controls">
+                    <div class="row g-2 mt-3 calculator-controls">
+                        <div class="col-12 col-md-7 calculator-numbers">
                             <div class="d-grid gap-2">
                                 <button class="btn btn-light" data-action="insert" data-value="7">7</button>
                                 <button class="btn btn-light" data-action="insert" data-value="8">8</button>
@@ -84,59 +85,81 @@
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-5 calculator-controls">
+                        <div class="col-12 col-md-5">
                             <div class="d-flex gap-2 mb-2 buttons-action-insert">
                                 <button type="button" class="btn btn-outline-secondary"
-                                        data-action="clear">C</button>
+                                        data-action="clear">C
+                                </button>
                                 <button type="button" class="btn btn-outline-secondary"
-                                        data-action="backspace">⌫</button>
+                                        data-action="backspace">⌫
+                                </button>
                                 <button type="button" class="btn btn-outline-secondary"
-                                        data-action="insert" data-value="(">(</button>
+                                        data-action="insert" data-value="(">(
+                                </button>
                                 <button type="button" class="btn btn-outline-secondary"
-                                        data-action="insert" data-value=")">)</button>
+                                        data-action="insert" data-value=")">)
+                                </button>
                                 <button type="button" class="btn btn-outline-secondary"
-                                        data-action="insert" data-value="pi">π</button>
+                                        data-action="insert" data-value="pi">π
+                                </button>
                                 <button type="button" class="btn btn-outline-secondary"
-                                        data-action="insert" data-value="e">e</button>
+                                        data-action="insert" data-value="e">e
+                                </button>
                                 <button type="button" class="btn btn-outline-secondary"
-                                        data-action="toggle-sign">±</button>
+                                        data-action="toggle-sign">±
+                                </button>
                             </div>
 
                             <div class="d-grid gap-2 buttons-action-func">
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="sin">sin</button>
+                                        data-action="func" data-func="sin">sin
+                                </button>
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="cos">cos</button>
+                                        data-action="func" data-func="cos">cos
+                                </button>
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="tan">tan</button>
+                                        data-action="func" data-func="tan">tan
+                                </button>
 
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="asin">asin</button>
+                                        data-action="func" data-func="asin">asin
+                                </button>
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="acos">acos</button>
+                                        data-action="func" data-func="acos">acos
+                                </button>
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="atan">atan</button>
+                                        data-action="func" data-func="atan">atan
+                                </button>
 
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="sqrt">sqrt</button>
+                                        data-action="func" data-func="sqrt">sqrt
+                                </button>
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="abs">abs</button>
+                                        data-action="func" data-func="abs">abs
+                                </button>
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="exp">exp</button>
+                                        data-action="func" data-func="exp">exp
+                                </button>
 
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="ln">ln</button>
+                                        data-action="func" data-func="ln">ln
+                                </button>
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="log">log</button>
+                                        data-action="func" data-func="log">log
+                                </button>
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="pow">pow</button>
+                                        data-action="func" data-func="pow">pow
+                                </button>
 
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="min">min</button>
+                                        data-action="func" data-func="min">min
+                                </button>
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="max">max</button>
+                                        data-action="func" data-func="max">max
+                                </button>
                                 <button class="btn btn-outline-secondary"
-                                        data-action="func" data-func="round">round</button>
+                                        data-action="func" data-func="round">round
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -146,7 +169,8 @@
             <div class="col-12 col-lg-4 history-area">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <div class="fw-semibold">{{#str}}history_title, scicalc{{/str}}</div>
-                    <button class="btn btn-sm btn-danger data-action-clear-history" type="button" data-action="clear-history">
+                    <button class="btn btn-sm btn-danger data-action-clear-history" type="button"
+                            data-action="clear-history">
                         {{#str}}clear_history, scicalc{{/str}}
                     </button>
                 </div>
@@ -157,7 +181,30 @@
 
         <div class="alert alert-info" role="note">
             <div class="fw-semibold mb-2">{{#str}}calculator_title, scicalc{{/str}}</div>
-            <div class="small">{{#str}}calculator_help, scicalc{{/str}}</div>
+            <div class="small">
+                {{#str}}calculator_help, scicalc{{/str}}
+                <code>+ - * / ^ ( )</code>,
+                <code>sin</code>,
+                <code>cos</code>,
+                <code>tan</code>,
+                <code>asin</code>,
+                <code>acos</code>,
+                <code>atan</code>,
+                <code>sqrt</code>,
+                <code>abs</code>,
+                <code>ln</code>,
+                <code>log</code>,
+                <code>exp</code>,
+                <code>pow(a,b)</code>,
+                <code>min</code>,
+                <code>max</code>,
+                <code>floor</code>,
+                <code>ceil</code>,
+                <code>round</code>,
+                fatorial <code>(!)</code>,
+                <code>pi</code>,
+                <code>e</code>.
+            </div>
         </div>
     </div>
 </div>

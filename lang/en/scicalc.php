@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['calculator_help'] = 'Type an expression and press Enter or "=". Supported: + - * / ^ ( ), sin, cos, tan, asin, acos, atan, sqrt, abs, ln, log, exp, pow(a,b), min, max, floor, ceil, round, factorial (!), pi, e.';
+$string['calculator_help'] = 'Type an expression and press Enter or "=".<br>Supported:';
 $string['calculator_title'] = 'Calculator';
 $string['clear_history'] = 'Clear history';
 $string['error_arity_mismatch'] = 'Invalid number of arguments.';

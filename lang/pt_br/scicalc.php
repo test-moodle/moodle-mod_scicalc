@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['calculator_help'] = 'Digite uma expressão e pressione Enter ou "=". Suportado: + - * / ^ ( ), sin, cos, tan, asin, acos, atan, sqrt, abs, ln, log, exp, pow(a,b), min, max, floor, ceil, round, fatorial (!), pi, e.';
+$string['calculator_help'] = 'Digite uma expressão e pressione Enter ou "=".<br>Suportado:';
 $string['calculator_title'] = 'Calculadora';
 $string['clear_history'] = 'Limpar histórico';
 $string['error_arity_mismatch'] = 'Quantidade de argumentos inválida.';
