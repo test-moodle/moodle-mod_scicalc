@@ -147,8 +147,7 @@
   box-shadow: 0 0 0 0.25rem rgba(255, 138, 31, 0.22), 0 4px 0 rgba(0, 0, 0, 0.4), 0 16px 22px rgba(0, 0, 0, 0.35);
 }
 .mod-scicalc .calculator button[data-action=clear],
-.mod-scicalc .calculator button[data-action=backspace],
-.mod-scicalc .calculator button[data-action=clear-history] {
+.mod-scicalc .calculator button[data-action=backspace] {
   background: linear-gradient(to bottom, #4d1b2a, #3a1420);
   border: 1px solid rgba(255, 120, 160, 0.22);
   color: #ffe6f0;
@@ -170,17 +169,6 @@
   border-radius: 16px;
   box-shadow: 0 14px 22px rgba(0, 0, 0, 0.35);
 }
-@media (min-width: 992px) {
-  .mod-scicalc .history-area {
-    margin-top: -41px;
-    padding-left: 18px;
-  }
-}
-@media (max-width: 991px) {
-  .mod-scicalc .history-area {
-    padding-top: 18px;
-  }
-}
 .mod-scicalc .history-area #scicalc-history {
   background: radial-gradient(900px 450px at 25% 0%, rgba(255, 255, 255, 0.06), transparent 55%), linear-gradient(to bottom, #101622, #0b0e12);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -189,6 +177,7 @@
   overflow: hidden;
   max-height: 420px;
   overflow-y: auto;
+  margin-top: 0;
 }
 .mod-scicalc .history-area #scicalc-history .list-group-item,
 .mod-scicalc .history-area #scicalc-history .list-group-item-action {
@@ -221,4 +210,22 @@
 .mod-scicalc .history-area #scicalc-history .list-group-item-action:last-child,
 .mod-scicalc .history-area #scicalc-history .list-group-item-action:last-child {
   border-bottom: 0;
+}
+.mod-scicalc .history-area #scicalc-history:empty {
+  display: none;
+}
+@media (min-width: 992px) {
+  .mod-scicalc .history-area {
+    padding-left: 18px;
+    margin-top: -41px;
+    transform: all 2s;
+  }
+  .mod-scicalc .history-area div:has(+ #scicalc-history:empty) {
+    margin-top: 41px;
+  }
+}
+@media (max-width: 991px) {
+  .mod-scicalc .history-area {
+    padding-top: 18px;
+  }
 }
