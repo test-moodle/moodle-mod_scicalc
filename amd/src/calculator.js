@@ -750,17 +750,17 @@ define([], function () {
                 return;
             }
 
-            if (action === "clear-history") {
-                document.getElementById("scicalc-history").innerHTML = "";
-                historyItems.length = 0;
-                renderHistory();
-                clearHistoryStorage();
-                return;
-            }
-
             if (action === "toggle-sign") {
                 toggleSign(input);
             }
+        });
+
+        let clearhistory = document.getElementById("data-action-clear-history");
+        clearhistory.addEventListener("click", (ev) => {
+            document.getElementById("scicalc-history").innerHTML = "";
+            historyItems.length = 0;
+            renderHistory();
+            clearHistoryStorage();
         });
 
         input.addEventListener("keydown", (ev) => {
