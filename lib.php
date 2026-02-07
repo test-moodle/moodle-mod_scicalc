@@ -59,6 +59,7 @@ function scicalc_supports(string $feature) {
  * @param stdClass $data The form data.
  * @param mod_scicalc_mod_form $mform The form.
  * @return int
+ * @throws dml_exception
  */
 function scicalc_add_instance(stdClass $data, $mform): int {
     global $DB;
@@ -75,6 +76,7 @@ function scicalc_add_instance(stdClass $data, $mform): int {
  * @param stdClass $data The form data.
  * @param mod_scicalc_mod_form $mform The form.
  * @return bool
+ * @throws dml_exception
  */
 function scicalc_update_instance(stdClass $data, $mform): bool {
     global $DB;
@@ -90,6 +92,7 @@ function scicalc_update_instance(stdClass $data, $mform): bool {
  *
  * @param int $id The instance id.
  * @return bool
+ * @throws dml_exception
  */
 function scicalc_delete_instance(int $id): bool {
     global $DB;
@@ -98,7 +101,7 @@ function scicalc_delete_instance(int $id): bool {
         return false;
     }
 
-    return (bool)$DB->delete_records("scicalc", ["id" => $id]);
+    return $DB->delete_records("scicalc", ["id" => $id]);
 }
 
 /**

@@ -46,7 +46,7 @@ foreach ($modinfo->instances["scicalc"] ?? [] as $cm) {
     }
     $instances[] = [
         "name" => $cm->name,
-        "url" => (new moodle_url("/mod/scicalc/view.php", ["id" => $cm->id]))->out(false),
+        "url" => new moodle_url("/mod/scicalc/view.php", ["id" => $cm->id]),
     ];
 }
 
