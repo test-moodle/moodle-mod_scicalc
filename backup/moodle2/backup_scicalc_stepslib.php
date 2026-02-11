@@ -31,21 +31,16 @@ class backup_scicalc_activity_structure_step extends backup_activity_structure_s
      */
     protected function define_structure() {
         // Define the root element describing the scicalc instance.
-        $scicalc = new backup_nested_element("scicalc", ["id"], [
-            "name",
-            "intro",
-            "introformat",
-            "timecreated",
-            "timemodified",
-        ]);
+        $scicalc = new backup_nested_element("scicalc", ["id"],
+            ["course", "name", "intro", "introformat"]);
 
-        // Define sources.
+        // Define data sources.
         $scicalc->set_source_table("scicalc", ["id" => backup::VAR_ACTIVITYID]);
 
-        // Define file annotations (intro files).
+        // Define file annotations (we do not use itemid in this example).
         $scicalc->annotate_files("mod_scicalc", "intro", null);
 
-        // Return the prepared structure.
+        // Return the root element (scicalc), wrapped into standard activity structure.
         return $this->prepare_activity_structure($scicalc);
     }
 }

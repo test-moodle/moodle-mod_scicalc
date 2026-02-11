@@ -29,9 +29,11 @@ class restore_scicalc_activity_structure_step extends restore_activity_structure
      * @return restore_path_element[]
      */
     protected function define_structure() {
-        return [
-            new restore_path_element("scicalc", "/activity/scicalc"),
-        ];
+        $paths = [];
+        $paths[] = new restore_path_element("scicalc", "/activity/scicalc");
+
+        // Return the paths wrapped into standard activity structure.
+        return $this->prepare_activity_structure($paths);
     }
 
     /**
@@ -43,15 +45,24 @@ class restore_scicalc_activity_structure_step extends restore_activity_structure
     protected function process_scicalc($data) {
         global $DB;
 
-        $data = (object) $data;
-
-        // Set the course to the current course being restored into.
+        $data = (object)$data;
         $data->course = $this->get_courseid();
 
-        // Insert the new instance.
-        $newitemid = $DB->insert_record("scicalc", $data);
+        if (empty($data->timecreated)) {
+            $data->timecreated = time();
+        }
 
-        // Map old instance id to new one.
+        if (empty($data->timemodified)) {
+            $data->timemodified = time();
+        }
+
+        if ($data->grade < 0) {
+            // Scale found, get mapping.
+            $data->grade = -($this->get_mappingid("scale", abs($data->grade)));
+        }
+
+        // Create the scicalc instance.
+        $newitemid = $DB->insert_record("scicalc", $data);
         $this->apply_activity_instance($newitemid);
     }
 
@@ -59,7 +70,7 @@ class restore_scicalc_activity_structure_step extends restore_activity_structure
      * After execute: add related files.
      */
     protected function after_execute() {
-        // Add intro files (no itemid).
+        // Add scicalc related files, no need to match by itemname (just internally handled context).
         $this->add_related_files("mod_scicalc", "intro", null);
     }
 }
